@@ -10,13 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_15_193255) do
+ActiveRecord::Schema.define(version: 2020_01_15_202706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "position_skill_taggings", force: :cascade do |t|
+    t.integer "position_id", null: false
+    t.integer "skill_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["position_id", "skill_id"], name: "position_skill_index", unique: true
+  end
+
   create_table "positions", force: :cascade do |t|
     t.string "title", default: "Undifined", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string "name", default: "Undifined", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
