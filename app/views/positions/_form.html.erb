@@ -1,4 +1,4 @@
-<%= form_with(model: position, local: true) do |form| %>
+<%= simple_form_for(position, local: true, class: "form-inline") do |form| %>
   <% if position.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(position.errors.count, "error") %> prohibited this position from being saved:</h2>
@@ -11,12 +11,11 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+  <%= form.input :title %>
+  <%= form.select(:skill_ids, Skill.all.collect {|s| [ s.name, s.id ] },
+    { :prompt => "Please select one or many skills" },
+    { :multiple => true, :size => 5, class: 'form-control'}) %>
+  <br>
+  <%= form.button :submit, class: 'btn btn-primary' %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
