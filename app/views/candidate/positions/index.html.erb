@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Positions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @positions.each do |position| %>
+      <tr>
+        <td><%= position.title %></td>
+        <% position.skills.each do |skill| %>
+          <td>#<%= skill.name %></td>
+        <% end %>
+        <td><%= link_to 'Apply', "#" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Back', candidate_positions_path %>

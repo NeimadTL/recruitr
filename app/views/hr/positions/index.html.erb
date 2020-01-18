@@ -17,9 +17,11 @@
         <% position.skills.each do |skill| %>
           <td>#<%= skill.name %></td>
         <% end %>
-        <td><%= link_to 'Show', position %></td>
-        <td><%= link_to 'Edit', edit_position_path(position) %></td>
-        <td><%= link_to 'Destroy', position, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', hr_position_path(position) %></td>
+        <td><%= link_to 'Edit', edit_hr_position_path(position) %></td>
+        <td><%= link_to 'Destroy', hr_position_path(position), method: :delete,
+          data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -27,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Position', new_position_path %>
+<%= link_to 'New Position', new_hr_position_path %>
