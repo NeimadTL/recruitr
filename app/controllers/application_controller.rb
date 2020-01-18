@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     if current_user.role.code == Role::HR_ROLE_CODE
       hr_positions_url
     elsif current_user.role.code == Role::CANDIDATE_ROLE_CODE
-      admin_transactions_url
+      candidate_positions_url
     end
   end
 

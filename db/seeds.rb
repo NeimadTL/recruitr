@@ -8,6 +8,7 @@
 
 Skill.delete_all
 Role.delete_all
+User.delete_all
 
 Skill.create!(name: 'Marketing')
 Skill.create!(name: 'JavaScript')
@@ -20,3 +21,6 @@ Skill.create!(name: 'Credit')
 Role.create!(code: 1, name: 'HR')
 Role.create!(code: 2, name: 'EMPLOYEE')
 Role.create!(code: 3, name: 'CANDIDATE')
+
+User.create!(email: "hr@recruitr.com", password: "hr_password2020",
+  password_confirmation: "hr_password2020", role_id: Role::HR_ROLE_CODE)

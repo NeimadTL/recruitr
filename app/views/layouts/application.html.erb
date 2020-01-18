@@ -23,7 +23,7 @@
           </li>
           <% if user_signed_in? %>
             <li class="nav-item">
-              <% if current_user.role.code == ROLE::HR_ROLE_CODE %>
+              <% if current_user.role.code == Role::HR_ROLE_CODE %>
                 <a class="nav-link" href="<%= hr_positions_path %>">Jobs</a>
               <% else %>
                 <a class="nav-link" href="<%= candidate_positions_path %>">Jobs</a>
@@ -45,7 +45,7 @@
           <% if user_signed_in? %>
             <li class="nav-item">
               <%= link_to '#', class: 'nav-link' do %>
-                <span class="badge badge-warning nav-link text-dark">Hey @<%= current_user.username %></span>
+                <span class="badge badge-warning nav-link text-dark">Hey @DummyUser</span>
               <% end %>
             </li>
             <li class="nav-item">
