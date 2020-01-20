@@ -22,5 +22,6 @@ Role.create!(code: Role::HR_ROLE_CODE, name: 'HR')
 Role.create!(code: Role::EMPLOYEE_ROLE_CODE, name: 'EMPLOYEE')
 Role.create!(code: Role::CANDIDATE_ROLE_CODE, name: 'CANDIDATE')
 
-User.create!(email: "hr@recruitr.com", password: "hr_password2020",
+User.create!(firstname: "HR", lastname: "RECRUITR", city: "RecruitR city",
+  country: "RecruitR country", email: "hr@recruitr.com", password: "hr_password2020",
   password_confirmation: "hr_password2020", role_id: Role::HR_ROLE_CODE)
