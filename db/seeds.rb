@@ -18,9 +18,9 @@ Skill.create!(name: 'Community')
 Skill.create!(name: 'Finance')
 Skill.create!(name: 'Credit')
 
-Role.create!(code: 1, name: 'HR')
-Role.create!(code: 2, name: 'EMPLOYEE')
-Role.create!(code: 3, name: 'CANDIDATE')
+Role.create!(code: Role::HR_ROLE_CODE, name: 'HR')
+Role.create!(code: Role::EMPLOYEE_ROLE_CODE, name: 'EMPLOYEE')
+Role.create!(code: Role::CANDIDATE_ROLE_CODE, name: 'CANDIDATE')
 
 User.create!(email: "hr@recruitr.com", password: "hr_password2020",
   password_confirmation: "hr_password2020", role_id: Role::HR_ROLE_CODE)
