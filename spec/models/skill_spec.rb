@@ -8,4 +8,7 @@ RSpec.describe Skill, type: :model do
   it { should have_many :position_skill_taggings }
   it { should have_many :positions }
 
+  it { should have_many :user_skill_taggings }
+  it { should have_many :users }
+
 end

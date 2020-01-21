@@ -10,5 +10,8 @@ class User < ApplicationRecord
   validates :country, presence: true, uniqueness: true
 
   belongs_to :role
-  
+
+  has_many :user_skill_taggings
+  has_many :skills, through: :user_skill_taggings
+
 end

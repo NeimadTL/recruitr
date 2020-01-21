@@ -5,4 +5,7 @@ class Skill < ApplicationRecord
   has_many :position_skill_taggings
   has_many :positions, through: :position_skill_taggings
 
+  has_many :user_skill_taggings
+  has_many :users, through: :user_skill_taggings
+
 end

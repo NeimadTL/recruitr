@@ -8,5 +8,8 @@ RSpec.describe User, type: :model do
   it { should validate_presence_of :country }
 
   it { should belong_to :role }
+
+  it { should have_many :user_skill_taggings }
+  it { should have_many :skills }
   
 end
