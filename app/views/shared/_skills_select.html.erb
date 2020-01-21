@@ -1,0 +1,3 @@
+<%= form.select :skill_ids, Skill.all.collect {|s| [ s.name, s.id ] },
+              { :prompt => "Please select one or many skills" },
+              { :multiple => true, :size => 5, class: 'form-control'} %>

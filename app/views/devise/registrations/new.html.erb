@@ -17,9 +17,11 @@
                 autofocus: true,
                 input_html: { autocomplete: "city" }%>
     <%= f.input :country,
-              required: true,
-              autofocus: true,
-              input_html: { autocomplete: "country" }%>
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "country" }%>
+    <%= f.label :skills, 'Skills' %>
+    <%= render '/shared/skills_select', form: f %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
