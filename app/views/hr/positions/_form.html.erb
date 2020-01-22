@@ -13,6 +13,8 @@
   <% end %>
 
   <%= form.input :title %>
+  <%= form.input :description %>
+  <%= form.label :skills, 'Skill requirements' %>
   <%= render '/shared/skills_select', form: form %>
   <br>
   <%= form.button :submit, class: 'btn btn-primary' %>

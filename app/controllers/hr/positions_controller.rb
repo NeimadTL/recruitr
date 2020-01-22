@@ -69,6 +69,6 @@ class Hr::PositionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def position_params
-      params.require(:position).permit(:title, :skill_ids => [])
+      params.require(:position).permit(:title, :description, :skill_ids => [])
     end
 end
