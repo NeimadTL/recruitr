@@ -11,5 +11,8 @@ RSpec.describe User, type: :model do
 
   it { should have_many :user_skill_taggings }
   it { should have_many :skills }
-  
+
+  it { should have_many :user_position_requests }
+  it { should have_many :applications }
+
 end

@@ -9,4 +9,7 @@ RSpec.describe Position, type: :model do
   it { should have_many :position_skill_taggings }
   it { should have_many :skills }
 
+  it { should have_many :user_position_requests }
+  it { should have_many :candidates }
+
 end
