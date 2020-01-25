@@ -15,7 +15,12 @@ class User < ApplicationRecord
   has_many :skills, through: :user_skill_taggings
 
   has_many :user_position_requests
-  has_many :applications, through: :user_postion_requests, class_name: "Position",
-                                                          foreign_key: "position_id"
+  has_many :applications, through: :user_position_requests, class_name: "Position",
+                                                           foreign_key: "position_id",
+                                                                source: :position
+
+  def apply(position)
+    applications << position
+  end
 
 end

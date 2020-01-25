@@ -8,5 +8,6 @@ Rails.application.routes.draw do
 
   namespace :candidate do
     resources :positions, only: [:index]
+    resources :user_position_requests, only: [:create]
   end
 end

@@ -6,7 +6,8 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th colspan="3"></th>
+      <th>Skills</th>
+      <th colspan="3">Actions</th>
     </tr>
   </thead>
 
@@ -14,10 +15,18 @@
     <% @positions.each do |position| %>
       <tr>
         <td><%= position.title %></td>
-        <% position.skills.each do |skill| %>
-          <td>#<%= skill.name %></td>
-        <% end %>
-        <td><%= link_to 'Apply', "#" %></td>
+        <td>
+          <% position.skills.each do |skill| %>
+            #<%= skill.name %>
+          <% end %>
+        </td>
+        <td>
+          <%= simple_form_for(current_user.user_position_requests.build,
+            url: candidate_user_position_requests_path) do |f| %>
+            <div><%= hidden_field_tag :position_id, position.id %></div>
+            <%= f.submit 'Apply', class: "btn btn-primary btn-sm" %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

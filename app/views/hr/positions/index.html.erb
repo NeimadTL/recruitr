@@ -6,7 +6,9 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th colspan="3"></th>
+      <th>Skills</th>
+      <th>Number of candidates</th>
+      <th colspan="3">Actions</th>
     </tr>
   </thead>
 
@@ -14,9 +16,12 @@
     <% @positions.each do |position| %>
       <tr>
         <td><%= position.title %></td>
-        <% position.skills.each do |skill| %>
-          <td>#<%= skill.name %></td>
-        <% end %>
+        <td>
+          <% position.skills.each do |skill| %>
+            #<%= skill.name %>
+          <% end %>
+        </td>
+        <td><%= position.candidates.count %></td>
         <td><%= link_to 'Show', hr_position_path(position) %></td>
         <td><%= link_to 'Edit', edit_hr_position_path(position) %></td>
         <td><%= link_to 'Destroy', hr_position_path(position), method: :delete,
