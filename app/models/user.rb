@@ -19,8 +19,19 @@ class User < ApplicationRecord
                                                            foreign_key: "position_id",
                                                                 source: :position
 
+  # apply to a position
   def apply(position)
     applications << position
+  end
+
+  # withdraw application for a position
+  def withdraw(position)
+    applications.delete(position)
+  end
+
+  # checks whether an user has already applied to a position or not
+  def applied?(position)
+    applications.include?(position)
   end
 
 end
