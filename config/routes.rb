@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   namespace :candidate do
-    resources :positions, only: [:index]
+    resources :positions, only: [:index, :show]
     resources :user_position_requests, only: [:create, :destroy]
   end
 end
