@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe UserPositionRequestsController, type: :controller do
+RSpec.describe Candidate::UserPositionRequestsController, type: :controller do
 
 end

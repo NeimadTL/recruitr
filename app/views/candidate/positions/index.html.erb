@@ -1,24 +1,17 @@
 <h1>Positions</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Skills</th>
-      <th colspan="3">Actions</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @positions.each do |position| %>
-      <tr>
-        <td><%= position.title %></td>
-        <td>
-          <% position.skills.each do |skill| %>
-            #<%= skill.name %>
-          <% end %>
-        </td>
-        <td>
+<div class="row">
+  <% @positions.each do |position| %>
+    <div class="col-sm-12 col-md-9 col-lg-6 col-xl-3">
+      <div class="card">
+        <h5 class="card-title"><%= position.title %></h5>
+        <div class="card-body">
+          <div class="card-title">
+            <% position.skills.each do |skill| %>
+              <span class="badge badge-info">#<%= skill.name %></span>
+            <% end %>
+          </div>
+          <p class="card-text text-truncate"><%= position.description %></p>
           <% if current_user.applied?(position) %>
             <% @request = current_user.user_position_requests.find_by(position_id: position.id) %>
             <%= simple_form_for(@request, url: candidate_user_position_request_path(@request),
@@ -32,11 +25,18 @@
               <%= f.submit 'Apply', class: "btn btn-primary btn-sm" %>
             <% end %>
           <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+
+
+
+
+
 
 <br>
 
