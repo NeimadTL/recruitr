@@ -16,7 +16,36 @@
       data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
   </div>
 </div>
-<br><br>
+<br>
+
+<h3>Candidates</h3>
+<div class="row">
+  <% @position.candidates.each do |candidate| %>
+    <div class="col-sm-12 col-md-9 col-lg-6 col-xl-3 mb-3">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title"><%= candidate.firstname %> <%= candidate.lastname %></h5>
+        </div>
+        <div class="card-body">
+          <div class="card-title">
+            <% candidate.skills.each do |skill| %>
+              <span class="badge badge-info">#<%= skill.name %></span>
+            <% end %>
+          </div>
+          <p class="card-text text-truncate"><%= candidate.city %>, <%= candidate.country %></p>
+          <div class="btn-toolbar">
+            <div class="mr-2">
+              <%= link_to 'Match this candidate', "#", class: "btn btn-primary btn-sm" %>
+              <%= link_to 'Reject this candidate', "#", class: "btn btn-danger btn-sm" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
 
 
 <%= link_to 'Back', hr_positions_path %>
