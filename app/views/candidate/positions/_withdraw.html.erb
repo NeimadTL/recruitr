@@ -1,5 +1,7 @@
-<% @request = current_user.user_position_requests.find_by(position_id: position.id) %>
-<%= simple_form_for(@request, url: candidate_user_position_request_path(@request),
-  html: { method: :delete }) do |f| %>
-  <%= f.submit 'Withdraw', class: "btn btn-danger btn-sm" %>
-<% end %>
+<div class="mr-2">
+  <% @request = current_user.user_position_requests.find_by(position_id: position.id) %>
+  <%= simple_form_for(@request, url: candidate_user_position_request_path(@request),
+    html: { method: :delete }) do |f| %>
+    <%= f.submit 'Withdraw', class: "btn btn-danger btn-sm" %>
+  <% end %>
+</div>

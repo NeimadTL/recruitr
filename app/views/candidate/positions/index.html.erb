@@ -2,7 +2,7 @@
 
 <div class="row">
   <% @positions.each do |position| %>
-    <div class="col-sm-12 col-md-9 col-lg-6 col-xl-3">
+    <div class="col-sm-12 col-md-9 col-lg-6 col-xl-3 mb-3">
       <div class="card">
         <div class="card-header">
           <h5 class="card-title"><%= position.title %></h5>
@@ -14,12 +14,14 @@
             <% end %>
           </div>
           <p class="card-text text-truncate"><%= position.description %></p>
-          <% if current_user.applied?(position) %>
-            <%= render 'withdraw', position: position %>
-          <% else %>
-            <%= render 'apply', position: position %>
-          <% end %>
-          <%= link_to 'Details', candidate_position_path(position), class: "btn btn-primary btn-sm" %>
+          <div class="btn-toolbar">
+            <% if current_user.applied?(position) %>
+              <%= render 'withdraw', position: position %>
+            <% else %>
+              <%= render 'apply', position: position %>
+            <% end %>
+            <%= link_to 'Details', candidate_position_path(position), class: "btn btn-primary btn-sm" %>
+          </div>
         </div>
       </div>
     </div>
