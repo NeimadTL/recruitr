@@ -1,7 +1,22 @@
-<p>
-  <strong>Title:</strong>
-  <%= @position.title %>
-</p>
+<br><br>
+<div class="card">
+  <div class="card-header">
+    <%= @position.title %>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">
+      <% @position.skills.each do |skill| %>
+        <span class="badge badge-info">#<%= skill.name %></span>
+      <% end %>
+    </h5>
+    <p class="card-text"><%= @position.description %></p>
+    (<%= @position.candidates.count %>)
+    <%= link_to 'Edit', edit_hr_position_path(@position), class: "btn btn-primary btn-sm" %>
+    <%= link_to 'Destroy', hr_position_path(@position), method: :delete,
+      data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+  </div>
+</div>
+<br><br>
 
-<%= link_to 'Edit', edit_hr_position_path(@position) %> |
+
 <%= link_to 'Back', hr_positions_path %>
