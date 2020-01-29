@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_23_193414) do
+ActiveRecord::Schema.define(version: 2020_01_29_150525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "interviewee_interviewer_matchings", force: :cascade do |t|
+    t.integer "interviewee_id", null: false
+    t.integer "interviewer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["interviewee_id", "interviewer_id"], name: "interviewee_interviewer_index", unique: true
+  end
 
   create_table "position_skill_taggings", force: :cascade do |t|
     t.integer "position_id", null: false

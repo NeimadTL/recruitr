@@ -19,6 +19,20 @@ class User < ApplicationRecord
                                                            foreign_key: "position_id",
                                                                 source: :position
 
+  has_many :interviewer_matchings, class_name: "IntervieweeInterviewerMatching",
+                                  foreign_key: "interviewer_id"
+  has_many :interviewers, through: :interviewee_interviewer_matchings, class_name: "User",
+                                                           foreign_key: "interviewer_id",
+                                                                source: :interviewer
+
+  has_many :interviewee_matchings, class_name: "IntervieweeInterviewerMatching",
+                                  foreign_key: "interviewee_id"
+  has_many :interviewees, through: :interviewee_interviewer_matchings, class_name: "User",
+                                                           foreign_key: "interviewee_id",
+                                                                source: :interviewee
+
+
+
   # apply to a position
   def apply(position)
     applications << position

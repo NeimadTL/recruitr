@@ -15,6 +15,12 @@ RSpec.describe User, type: :model do
   it { should have_many :user_position_requests }
   it { should have_many :applications }
 
+  it { should have_many :interviewer_matchings }
+  it { should have_many :interviewers }
+
+  it { should have_many :interviewee_matchings }
+  it { should have_many :interviewees }
+
   let(:candidate) {
     User.create!(firstname: "John", lastname: "DOE", city: "Brussels",
       country: "Belgium", email: "john_doe@gmail.com", password: "Gimethepass20",
