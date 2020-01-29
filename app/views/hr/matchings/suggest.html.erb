@@ -1,0 +1,9 @@
+<br>
+<h5>
+  We are suggesting you those interviewers for
+  <%= @candidate.firstname %> <%= @candidate.lastname %> :
+</h5>
+<br>
+<% @interviewers.each do |interviewer| %>
+  <p><%= interviewer.firstname %> <%= interviewer.lastname %></p>
+<% end %>
