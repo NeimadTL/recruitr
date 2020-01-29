@@ -10,7 +10,7 @@ class InterviewerMatcher
         end
       end
     end
-    interviewers
+    interviewers.uniq
   end
 
 end

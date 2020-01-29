@@ -1,4 +1,6 @@
 class Hr::PositionsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :require_to_be_hr
   before_action :set_position, only: [:show, :edit, :update, :destroy]
 
   # GET /positions
@@ -70,5 +72,11 @@ class Hr::PositionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def position_params
       params.require(:position).permit(:title, :description, :skill_ids => [])
+    end
+
+    def require_to_be_hr
+      unless current_user.role.code == Role::HR_ROLE_CODE
+        render :file => "#{Rails.root}/public/401", :layout => false, :status => :unauthorized
+      end
     end
 end
