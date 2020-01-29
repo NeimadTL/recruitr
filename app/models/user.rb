@@ -21,15 +21,15 @@ class User < ApplicationRecord
 
   has_many :interviewer_matchings, class_name: "IntervieweeInterviewerMatching",
                                   foreign_key: "interviewer_id"
-  has_many :interviewers, through: :interviewee_interviewer_matchings, class_name: "User",
-                                                           foreign_key: "interviewer_id",
-                                                                source: :interviewer
+  has_many :interviewers, through: :interviewer_matchings, class_name: "User",
+                                                          foreign_key: "interviewer_id",
+                                                               source: :interviewer
 
   has_many :interviewee_matchings, class_name: "IntervieweeInterviewerMatching",
                                   foreign_key: "interviewee_id"
-  has_many :interviewees, through: :interviewee_interviewer_matchings, class_name: "User",
-                                                           foreign_key: "interviewee_id",
-                                                                source: :interviewee
+  has_many :interviewees, through: :interviewee_matchings, class_name: "User",
+                                                          foreign_key: "interviewee_id",
+                                                               source: :interviewee
 
 
 

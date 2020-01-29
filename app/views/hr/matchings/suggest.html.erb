@@ -3,7 +3,11 @@
   We are suggesting you those interviewers for
   <%= @candidate.firstname %> <%= @candidate.lastname %> :
 </h5>
-<br>
-<% @interviewers.each do |interviewer| %>
-  <p><%= interviewer.firstname %> <%= interviewer.lastname %></p>
+
+<%= simple_form_for(@candidate.interviewer_matchings.build, url: hr_match_path) do |f| %>
+  <div><%= hidden_field_tag :user_id, @candidate.id %></div>
+  <div class="btn-group-vertical">
+    <%= f.collection_check_boxes :interviewer_id, @interviewers, :id, :firstname %>
+  </div><br>
+  <%= f.submit 'Match', class: "btn btn-primary btn-sm" %>
 <% end %>
