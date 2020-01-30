@@ -11,7 +11,7 @@ RSpec.describe InterviewerMatcher do
 
   it "should suggest interviewers matching the skills of the candidate" do
     candidate.skills << Skill.find_by(name: 'Marketing')
-    interviewers = InterviewerMatcher.new.interviewers_for(candidate)
+    interviewers = Hr::MatchingsController::interviewers_for(candidate)
     expect(interviewers.count).to eql 2
     expect(interviewers[0].firstname).to eql 'Kyle'
     expect(interviewers[0].lastname).to eql 'SIMPSON'
@@ -21,7 +21,7 @@ RSpec.describe InterviewerMatcher do
 
   it "should suggest no interviewers when there is no matching for candidate's skills" do
     candidate.skills << Skill.find_by(name: 'Credit')
-    interviewers = InterviewerMatcher.new.interviewers_for(candidate)
+    interviewers = Hr::MatchingsController::interviewers_for(candidate)
     expect(interviewers.empty?).to be true
   end
 

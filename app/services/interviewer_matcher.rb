@@ -1,4 +1,4 @@
-class InterviewerMatcher
+module InterviewerMatcher
 
   def interviewers_for(candidate)
     interviewers = []

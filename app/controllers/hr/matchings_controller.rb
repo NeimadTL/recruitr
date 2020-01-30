@@ -1,10 +1,12 @@
 class Hr::MatchingsController < ApplicationController
+  extend InterviewerMatcher
+
   before_action :authenticate_user!
   before_action :require_to_be_hr
   before_action :set_candidate
 
   def suggest
-    @interviewers = InterviewerMatcher.new.interviewers_for(@candidate)
+    @interviewers = Hr::MatchingsController::interviewers_for(@candidate)
   end
 
   def match
