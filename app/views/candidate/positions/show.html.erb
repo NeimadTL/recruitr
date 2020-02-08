@@ -10,6 +10,12 @@
       <% end %>
     </h5>
     <p class="card-text"><%= @position.description %></p>
+    <% if current_user.interviewers.count > 0 %>
+      Interviewers :<br>
+      <% current_user.interviewers.each do |interviewer| %>
+        <span class="badge badge-secondary">#<%= interviewer.firstname %></span>
+      <% end %>
+    <% end %><br><br>
     <% if current_user.applied?(@position) %>
       <%= render 'withdraw', position: @position %>
     <% else %>
