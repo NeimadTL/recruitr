@@ -7,7 +7,7 @@ class Hr::MatchingsController < ApplicationController
   before_action :set_position
 
   def suggest
-    @interviewers = Hr::MatchingsController::interviewers_for(@candidate)
+    @interviewers = Hr::MatchingsController::interviewers_for(@candidate, @position)
   end
 
   def match

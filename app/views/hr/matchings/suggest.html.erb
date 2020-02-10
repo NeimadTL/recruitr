@@ -1,14 +1,26 @@
 <br>
-<h5>
-  We are suggesting you those interviewers for
-  <%= @candidate.firstname %> <%= @candidate.lastname %> :
-</h5>
-
-<%= simple_form_for(@candidate.interviewer_matchings.build, url: hr_match_path) do |f| %>
-  <div><%= hidden_field_tag :user_id, @candidate.id %></div>
-  <div><%= hidden_field_tag :position_id, @position.id %></div>
-  <div class="btn-group-vertical">
-    <%= f.collection_check_boxes :interviewer_id, @interviewers, :id, :firstname %>
-  </div><br>
-  <%= f.submit 'Match', class: "btn btn-primary btn-sm" %>
+<% if @interviewers.empty? %>
+  <h5>
+    Sorry, but <i><%= @candidate.firstname %> <%= @candidate.lastname %></i>
+    is not a good match for the <i><%= @position.title %></i> position
+  </h5>
+  <%= button_to "/hr/reject/#{@candidate.id}", class: "btn btn-danger btn-sm" do %>
+    Reject this candidate <div><%= hidden_field_tag :position_id, @position.id %></div>
+  <% end %>
+<% else %>
+  <h5>
+    We are suggesting you those interviewers for
+    <i><%= @candidate.firstname %> <%= @candidate.lastname %></i>
+    <% if @interviewers[0].role_id == Role::HR_ROLE_CODE %>
+      <u>(unfortunaly, no interviewers were found apart from HR)</u>
+    <% end %>:
+  </h5>
+  <%= simple_form_for(@candidate.interviewer_matchings.build, url: hr_match_path) do |f| %>
+    <div><%= hidden_field_tag :user_id, @candidate.id %></div>
+    <div><%= hidden_field_tag :position_id, @position.id %></div>
+    <div class="btn-group-vertical">
+      <%= f.collection_check_boxes :interviewer_id, @interviewers, :id, :firstname %>
+    </div><br>
+    <%= f.submit 'Match', class: "btn btn-primary btn-sm" %>
+  <% end %>
 <% end %>
