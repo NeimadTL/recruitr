@@ -41,7 +41,7 @@
                   <span class="badge badge-secondary">#<%= interviewer.firstname %></span>
                 <% end %>
               <% else %>
-                <%= link_to 'Match this candidate', hr_path(candidate.id), class: "btn btn-primary btn-sm" %>
+                <%= link_to 'Match this candidate', hr_path(@position, candidate), class: "btn btn-primary btn-sm" %>
               <% end %><br><br>
               <%= button_to "/hr/reject/#{candidate.id}", class: "btn btn-danger btn-sm" do %>
                 Reject this candidate <div><%= hidden_field_tag :position_id, @position.id %></div>

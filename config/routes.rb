@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   namespace :hr do
     resources :positions
-    get '/suggest_interviews/:user_id', to: "matchings#suggest"
+    get '/interviewers/position/:position_id/candidate/:user_id', to: "matchings#suggest"
     post '/match', to: "matchings#match"
     post '/reject/:user_id', to: "matchings#reject"
   end
