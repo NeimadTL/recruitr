@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :positions
     get '/suggest_interviews/:user_id', to: "matchings#suggest"
     post '/match', to: "matchings#match"
+    post '/reject/:user_id', to: "matchings#reject"
   end
 
   namespace :candidate do

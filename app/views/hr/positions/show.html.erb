@@ -43,7 +43,9 @@
               <% else %>
                 <%= link_to 'Match this candidate', hr_path(candidate.id), class: "btn btn-primary btn-sm" %>
               <% end %><br><br>
-              <%= link_to 'Reject this candidate', "#", class: "btn btn-danger btn-sm" %>
+              <%= button_to "/hr/reject/#{candidate.id}", class: "btn btn-danger btn-sm" do %>
+                Reject this candidate <div><%= hidden_field_tag :position_id, @position.id %></div>
+              <% end %>
             </div>
           </div>
         </div>

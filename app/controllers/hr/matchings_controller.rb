@@ -15,6 +15,13 @@ class Hr::MatchingsController < ApplicationController
     redirect_to hr_positions_path, notice: 'The candidate has been matched.'
   end
 
+  def reject
+    position = Position.find(params[:position_id])
+    @candidate.withdraw(position)
+    @candidate.interviewers.clear
+    redirect_to hr_position_path(position), notice: 'The candidate has been rejected.'
+  end
+
   private
 
     def set_candidate
