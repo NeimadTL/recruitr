@@ -11,7 +11,7 @@ module InterviewerMatcher
 
     # if the candidate has at least half of the required skills then
     # we start to look for the best interviewers for this candidate
-    if match_rate >= (position.skills.count / 2)
+    if match_rate >= (position.skills.count / 2.0)
       employees = User.where(role_id: Role::EMPLOYEE_ROLE_CODE)
       employees.each do |employee|
         candidate.skills.to_a.each do |skill|
