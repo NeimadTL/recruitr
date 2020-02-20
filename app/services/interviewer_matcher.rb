@@ -1,4 +1,5 @@
-module InterviewerMatcher
+class InterviewerMatcher
+  include Singleton
 
   def interviewers_for(candidate, position)
     interviewers = []

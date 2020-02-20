@@ -16,7 +16,7 @@ RSpec.describe InterviewerMatcher do
     position.skills << Skill.find_by(name: 'Ruby')
     candidate.skills << Skill.find_by(name: 'Marketing')
     candidate.apply(position)
-    interviewers = Hr::MatchingsController::interviewers_for(candidate, position)
+    interviewers = InterviewerMatcher.instance.interviewers_for(candidate, position)
     expect(interviewers.empty?).to be true
   end
 
@@ -28,7 +28,7 @@ RSpec.describe InterviewerMatcher do
     candidate.skills << Skill.find_by(name: 'Communication')
     candidate.skills << Skill.find_by(name: 'Marketing')
     candidate.apply(position)
-    interviewers = Hr::MatchingsController::interviewers_for(candidate, position)
+    interviewers = InterviewerMatcher.instance.interviewers_for(candidate, position)
     expect(interviewers.count).to eql 2
     expect(interviewers[0].firstname).to eql 'Kyle'
     expect(interviewers[0].lastname).to eql 'SIMPSON'
@@ -43,7 +43,7 @@ RSpec.describe InterviewerMatcher do
     position.skills << Skill.find_by(name: 'Communication')
     candidate.skills << Skill.find_by(name: 'Marketing')
     candidate.apply(position)
-    interviewers = Hr::MatchingsController::interviewers_for(candidate, position)
+    interviewers = InterviewerMatcher.instance.interviewers_for(candidate, position)
     expect(interviewers.empty?).to be true
   end
 
@@ -54,7 +54,7 @@ RSpec.describe InterviewerMatcher do
     candidate.skills << Skill.find_by(name: 'Credit')
     candidate.skills << Skill.find_by(name: 'Finance')
     candidate.apply(position)
-    interviewers = Hr::MatchingsController::interviewers_for(candidate, position)
+    interviewers = InterviewerMatcher.instance.interviewers_for(candidate, position)
     expect(interviewers.count).to eql 1
     expect(interviewers[0].firstname).to eql 'HR'
     expect(interviewers[0].lastname).to eql 'RECRUITR'
