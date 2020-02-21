@@ -1,7 +1,7 @@
 class Hr::MatchingsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :require_to_be_hr
+  before_action HrFilter
   before_action :set_candidate
   before_action :set_position
 
@@ -29,12 +29,6 @@ class Hr::MatchingsController < ApplicationController
 
     def set_position
       @position = Position.find(params[:position_id])
-    end
-
-    def require_to_be_hr
-      unless current_user.role.code == Role::HR_ROLE_CODE
-        render :file => "#{Rails.root}/public/401", :layout => false, :status => :unauthorized
-      end
     end
 
 end
