@@ -36,10 +36,7 @@
           <div class="btn-toolbar">
             <div class="mr-2">
               <% if candidate.interviewers.count > 0 %>
-                Interviewers :<br>
-                <% candidate.interviewers.each do |interviewer| %>
-                  <span class="badge badge-secondary">#<%= interviewer.firstname %></span>
-                <% end %>
+                <%= render 'shared/interviewers', candidate: candidate %>
               <% else %>
                 <%= link_to 'Match this candidate', hr_path(@position, candidate), class: "btn btn-primary btn-sm" %>
               <% end %><br><br>
