@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_17_194617) do
+ActiveRecord::Schema.define(version: 2020_02_24_224858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2020_02_17_194617) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["interviewee_id", "interviewer_id"], name: "interviewee_interviewer_index", unique: true
+    t.index ["interviewee_id"], name: "index_interviewee_interviewer_matchings_on_interviewee_id"
+    t.index ["interviewer_id"], name: "index_interviewee_interviewer_matchings_on_interviewer_id"
   end
 
   create_table "position_skill_taggings", force: :cascade do |t|
@@ -29,6 +31,8 @@ ActiveRecord::Schema.define(version: 2020_02_17_194617) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["position_id", "skill_id"], name: "position_skill_index", unique: true
+    t.index ["position_id"], name: "index_position_skill_taggings_on_position_id"
+    t.index ["skill_id"], name: "index_position_skill_taggings_on_skill_id"
   end
 
   create_table "positions", force: :cascade do |t|
